@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BeautyBloom - Главная</title>
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <div class="logo">
+          <a href="Index.html"
+            ><img src="images/logo.png" alt="BeautyBloom Logo" class="site-logo" />
+            BeautyBloom</a
+          >
+        </div>
+        <div class="header-right">
+          <nav class="main-nav">
+            <ul>
+              <li><a href="Index.html" class="active">Главная</a></li>
+              <li><a href="contact.html">Контакты</a></li>
+              <li><a href="cart.html">Корзина <span id="cart-counter">(0)</span></a></li>
+            </ul>
+          </nav>
+          <div id="auth-container">
+            <a href="#" id="login-btn">Войти</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1>Добро пожаловать в BeautyBloom!</h1>
+        <p style="margin-bottom: 30px; font-size: 18px">
+          Откройте для себя мир лучшей косметики.
+        </p>
+        <h2 class="section-title">Ваш мир безупречной красоты</h2>
+        <div class="product-grid" id="product-grid-container">
+          </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 BeautyBloom. Все права защищены.</p>
+      </div>
+    </footer>
+
+    <div id="auth-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-auth-modal">&times;</span>
+        
+        <div id="login-form-view">
+          <h2>Вход</h2>
+          <form id="login-form">
+            <input type="email" id="login-email" placeholder="Ваш Email" required />
+            <input type="password" id="login-password" placeholder="Пароль" required />
+            <div id="login-error" class="error-message"></div>
+            <button type="submit" class="btn">Войти</button>
+            <p>Нет аккаунта? <a href="#" id="show-register">Зарегистрироваться</a></p>
+          </form>
+        </div>
+        
+        <div id="register-form-view" style="display: none;">
+          <h2>Регистрация</h2>
+          <form id="register-form">
+            <input type="email" id="register-email" placeholder="Ваш Email" required />
+            <input type="password" id="register-password" placeholder="Придумайте пароль (мин. 6)" required />
+            <input type="password" id="register-password-confirm" placeholder="Повторите пароль" required />
+            <div id="register-error" class="error-message"></div>
+            <button type="submit" class="btn">Зарегистрироваться</button>
+            <p>Уже есть аккаунт? <a href="#" id="show-login">Войти</a></p>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
