@@ -83,6 +83,6 @@ app.get('/', (req, res) => {
 });
 
 // Запуск сервера
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Сервер запущен! Порт: ${PORT}`);
 });
