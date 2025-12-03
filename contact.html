@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакты - BeautyBloom</title>
+    <link rel="stylesheet" href="Style.css" />
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=8d91ced0-a041-4a22-8c9f-6593ef51afc6&lang=ru_RU" type="text/javascript"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <div class="logo">
+          <a href="Index.html"
+            ><img src="images/logo.png" alt="BeautyBloom Logo" class="site-logo" />
+            BeautyBloom</a
+          >
+        </div>
+        <div class="header-right">
+          <nav class="main-nav">
+            <ul>
+              <li><a href="Index.html">Главная</a></li>
+              <li><a href="contact.html" class="active">Контакты</a></li>
+              <li><a href="cart.html">Корзина <span id="cart-counter">(0)</span></a></li>
+            </ul>
+          </nav>
+          <div id="auth-container">
+            <a href="#" id="login-btn">Войти</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1>Свяжитесь с нами</h1>
+        <p class="slogan">"Ваша красота - наша забота."</p>
+        <div class="contact-details">
+          <div class="contact-info">
+            <h2>Наши контакты</h2>
+            <p><strong>Телефон:</strong> <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
+            <p><strong>Адрес магазина:</strong> г. Москва, ул. Тверская, д. 1, офис 101</p>
+            <p><strong>Email:</strong> <a href="mailto:help@beautybloom.com">help@beautybloom.com</a></p>
+            <p><strong>Часы работы:</strong> Пн-Вс, с 10:00 до 21:00</p>
+          </div>
+          <div class="contact-form">
+            <h2>Напишите нам</h2>
+            <form action="#" method="POST" id="contact-page-form">
+              <div>
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="user_name" required />
+              </div>
+              <div>
+                <label for="email">Ваш Email:</label>
+                <input type="email" id="email" name="user_email" required />
+              </div>
+              <div>
+                <label for="message">Сообщение:</label>
+                <textarea id="message" name="user_message" required></textarea>
+              </div>
+              <div>
+                <button type="submit" class="btn">Отправить</button>
+              </div>
+            </form>
+            <div id="contact-success-message" class="form-success-msg">
+              Ваше письмо успешно отправлено! Мы свяжемся с вами в ближайшее время.
+            </div>
+          </div>
+        </div>
+        <h2 style="margin-top: 40px; text-align: center;">Мы на карте</h2>
+        <div id="map">
+          </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 BeautyBloom. Все права защищены.</p>
+      </div>
+    </footer>
+    
+    <div id="auth-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-auth-modal">&times;</span>
+        <div id="login-form-view">
+          <h2>Вход</h2>
+          <form id="login-form">
+            <input type="email" id="login-email" placeholder="Ваш Email" required />
+            <input type="password" id="login-password" placeholder="Пароль" required />
+            <div id="login-error" class="error-message"></div>
+            <button type="submit" class="btn">Войти</button>
+            <p>Нет аккаунта? <a href="#" id="show-register">Зарегистрироваться</a></p>
+          </form>
+        </div>
+        <div id="register-form-view" style="display: none;">
+          <h2>Регистрация</h2>
+          <form id="register-form">
+            <input type="email" id="register-email" placeholder="Ваш Email" required />
+            <input type="password" id="register-password" placeholder="Придумайте пароль (мин. 6)" required />
+            <input type="password" id="register-password-confirm" placeholder="Повторите пароль" required />
+            <div id="register-error" class="error-message"></div>
+            <button type="submit" class="btn">Зарегистрироваться</button>
+            <p>Уже есть аккаунт? <a href="#" id="show-login">Войти</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

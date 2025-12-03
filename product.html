@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Товар - BeautyBloom</title>
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <div class="logo">
+          <a href="Index.html"
+            ><img src="images/logo.png" alt="BeautyBloom Logo" class="site-logo" />
+            BeautyBloom</a
+          >
+        </div>
+        <div class="header-right">
+          <nav class="main-nav">
+            <ul>
+              <li><a href="Index.html">Главная</a></li>
+              <li><a href="contact.html">Контакты</a></li>
+              <li><a href="cart.html">Корзина <span id="cart-counter">(0)</span></a></li>
+            </ul>
+          </nav>
+          <div id="auth-container">
+            <a href="#" id="login-btn">Войти</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="product-page">
+          <div class="product-image">
+            <img
+              src="https://via.placeholder.com/500x500/F5E8E8/333?text=Загрузка..."
+              alt="Изображение товара"
+              id="product-image"
+            />
+          </div>
+          <div class="product-info">
+            <h1 id="product-name">Название товара...</h1>
+            <div class="price"><span id="product-price">...</span> ₽</div>
+            <p id="product-description">Описание товара...</p>
+            <div class="product-nav">
+              <a href="#description">Перейти к описанию</a>
+              <a href="#composition">Перейти к составу</a>
+            </div>
+            <h2 id="description">Описание товара</h2>
+            <p id="product-full-description">
+              Полное описание товара будет загружено здесь...
+            </p>
+            <h2 id="composition">Состав товара</h2>
+            <ul id="product-composition">
+              <li>Состав будет загружен здесь...</li>
+            </ul>
+            <a href="#" class="btn" id="add-to-cart-btn" data-id="">Добавить в корзину</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 BeautyBloom. Все права защищены.</p>
+      </div>
+    </footer>
+    
+    <div id="auth-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-auth-modal">&times;</span>
+        <div id="login-form-view">
+          <h2>Вход</h2>
+          <form id="login-form">
+            <input type="email" id="login-email" placeholder="Ваш Email" required />
+            <input type="password" id="login-password" placeholder="Пароль" required />
+            <div id="login-error" class="error-message"></div>
+            <button type="submit" class="btn">Войти</button>
+            <p>Нет аккаунта? <a href="#" id="show-register">Зарегистрироваться</a></p>
+          </form>
+        </div>
+        <div id="register-form-view" style="display: none;">
+          <h2>Регистрация</h2>
+          <form id="register-form">
+            <input type="email" id="register-email" placeholder="Ваш Email" required />
+            <input type="password" id="register-password" placeholder="Придумайте пароль (мин. 6)" required />
+            <input type="password" id="register-password-confirm" placeholder="Повторите пароль" required />
+            <div id="register-error" class="error-message"></div>
+            <button type="submit" class="btn">Зарегистрироваться</button>
+            <p>Уже есть аккаунт? <a href="#" id="show-login">Войти</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
