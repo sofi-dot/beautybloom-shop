@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ===================================================================
-     ЛОГИКА АВТОРИЗАЦИИ (СВЯЗЬ С СЕРВЕРОМ NODE.JS)
+     ЛОГИКА АВТОРИЗАЦИИ (СВЯЗЬ С СЕРВЕРОМ)
      =================================================================== */
 
   // Получаем элементы формы
@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- РЕГИСТРАЦИЯ ---
+  // --- РЕГИСТРАЦИЯ (ИСПРАВЛЕНО) ---
   if (registerForm) {
     registerForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -289,9 +289,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return; 
       }
 
-      // Отправляем запрос на сервер
+      // Отправляем запрос на сервер (относительный путь)
       try {
-        const response = await fetch('https://beautybloom-shop-production.up.railway.app/api/auth/register', {
+        const response = await fetch('/api/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: email, password: pass1 })
@@ -308,12 +308,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } catch (error) {
          console.error('Ошибка:', error);
-         showError(registerErrorEl, "Ошибка подключения к серверу (убедитесь, что node server.js запущен)");
+         showError(registerErrorEl, "Ошибка подключения к серверу");
       }
     });
   }
 
-  // --- ВХОД ---
+  // --- ВХОД (ИСПРАВЛЕНО) ---
   if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -323,7 +323,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const pass = document.getElementById("login-password").value;
 
       try {
-        const response = await fetch('http://https://beautybloom-shop-production.up.railway.app/api/auth/login', {
+        // Используем относительный путь, без http://...
+        const response = await fetch('/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: email, password: pass })
@@ -342,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } catch (error) {
          console.error('Ошибка:', error);
-         showError(loginErrorEl, "Ошибка подключения к серверу (убедитесь, что node server.js запущен)");
+         showError(loginErrorEl, "Ошибка подключения к серверу");
       }
     });
   }

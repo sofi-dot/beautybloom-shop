@@ -2,25 +2,29 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require('path'); // Добавили модуль для работы с путями
 
 const app = express();
-// Railway сам назначит порт, или используем 3000 локально
+// Railway автоматически выдаст порт, или используем 3000 локально
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
 
-// --- ПОДКЛЮЧЕНИЕ К БАЗЕ ДАННЫХ (УНИВЕРСАЛЬНОЕ) ---
-// Используем переменные окружения (для Railway) ИЛИ локальные значения (для дома)
+// --- ВАЖНОЕ ИСПРАВЛЕНИЕ ---
+// Раздаем статические файлы (HTML, CSS, JS, картинки) из текущей папки
+app.use(express.static(__dirname));
+
+// --- ПОДКЛЮЧЕНИЕ К БАЗЕ ДАННЫХ ---
 const db = mysql.createConnection({
     host: process.env.MYSQLHOST || 'localhost',
     user: process.env.MYSQLUSER || 'root',
-    password: process.env.MYSQLPASSWORD || '1234', // Ваш локальный пароль
+    password: process.env.MYSQLPASSWORD || '1234',
     database: process.env.MYSQLDATABASE || 'beautybloom_db',
     port: process.env.MYSQLPORT || 3306
 });
 
-// Проверка подключения и автоматическое создание таблицы
+// Проверка подключения и создание таблицы
 db.connect(err => {
     if (err) {
         console.error('ОШИБКА подключения к базе данных: ' + err.stack);
@@ -28,7 +32,6 @@ db.connect(err => {
     }
     console.log('Успешное подключение к MySQL (ID ' + db.threadId + ')');
     
-    // Создаем таблицу пользователей, если её нет (нужно для чистого запуска на Railway)
     const createTableQuery = `
         CREATE TABLE IF NOT EXISTS users (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -71,6 +74,12 @@ app.post('/api/auth/login', (req, res) => {
             res.json({ success: false, message: 'Неверный email или пароль.' });
         }
     });
+});
+
+// --- МАРШРУТ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ ---
+// Если заходят просто на сайт, отдаем Index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Index.html'));
 });
 
 // Запуск сервера
