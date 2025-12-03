@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Отправляем запрос на сервер
       try {
-        const response = await fetch('http://localhost:3000/register', {
+        const response = await fetch('https://beautybloom-shop-production.up.railway.app/api/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: email, password: pass1 })
@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const pass = document.getElementById("login-password").value;
 
       try {
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch('http://https://beautybloom-shop-production.up.railway.app/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: email, password: pass })
