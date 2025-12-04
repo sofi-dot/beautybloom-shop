@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCounter();
     
     // Перенаправляем на главную после добавления
-    window.location.href = 'Index.html'; 
+    window.location.href = 'index.html'; 
   }
   
   // Отрисовка страницы корзины
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
     if (cart.length === 0) {
-      container.innerHTML = "<p>Ваша корзина пуста. <a href='Index.html'>Перейти к покупкам</a></p>";
+      container.innerHTML = "<p>Ваша корзина пуста. <a href='index.html'>Перейти к покупкам</a></p>";
       totalSumEl.innerText = '0';
       if (checkoutBtn) checkoutBtn.style.display = 'none';
       return;
